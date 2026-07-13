@@ -55,7 +55,7 @@ jobs:
   build-x86:
     name: Build X64
     needs: [strip-version]
-    runs-on: blacksmith-16vcpu-ubuntu-2404
+    runs-on: ww-onprem-cpu-fast-8gb
     permissions:
       contents: read
       packages: write
