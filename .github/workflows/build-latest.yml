@@ -42,7 +42,7 @@ jobs:
 
   build-x86:
     name: Build X64
-    runs-on: ww-onprem-cpu-fast-8gb
+    runs-on: ww-onprem-medium
     permissions:
       contents: read
       packages: write
@@ -68,7 +68,7 @@ jobs:
 
   combine-images:
     name: Combine Images
-    runs-on: blacksmith-2vcpu-ubuntu-2404-arm
+    runs-on: ww-onprem-small
     needs: [build-arm64, build-x86]
     permissions:
       contents: read
