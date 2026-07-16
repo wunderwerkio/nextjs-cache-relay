@@ -17,7 +17,7 @@ env:
 jobs:
   strip-version:
     name: Strip Version Prefix
-    runs-on: blacksmith-2vcpu-ubuntu-2404-arm
+    runs-on: ww-onprem-small
     outputs:
       version: ${{ steps.strip.outputs.version }}
     steps:
@@ -55,7 +55,7 @@ jobs:
   build-x86:
     name: Build X64
     needs: [strip-version]
-    runs-on: ww-onprem-cpu-fast-8gb
+    runs-on: ww-onprem-medium
     permissions:
       contents: read
       packages: write
@@ -81,7 +81,7 @@ jobs:
 
   combine-images:
     name: Combine Images
-    runs-on: blacksmith-2vcpu-ubuntu-2404-arm
+    runs-on: ww-onprem-small
     needs: [strip-version, build-arm64, build-x86]
     permissions:
       contents: read
@@ -99,7 +99,7 @@ jobs:
 
   publish-helm-chart:
     name: Publish Helm Chart
-    runs-on: blacksmith-2vcpu-ubuntu-2404-arm
+    runs-on: ww-onprem-small
     needs: [strip-version, combine-images]
     permissions:
       contents: read

@@ -10,7 +10,7 @@ on:
 
 jobs:
   publish:
-    runs-on: ww-onprem-cpu-eco-4gb
+    runs-on: ww-onprem-small
     permissions:
       packages: write
       contents: read
